@@ -8,10 +8,10 @@
 .article {
   display: flex;
   flex-direction: column;
-  min-height: 455px;
   font-family: "Cormorant Garamond", serif;
   font-weight: bold;
   overflow: hidden;
+  height: 100%;
 }
 
 .article:hover img {
@@ -22,10 +22,6 @@
 
 @media screen and (max-width: 700px) {
   .image {
-    height: 50%
-  }
-
-  .article {
-    min-height: 280px;
+    height: 120px
   }
 }
