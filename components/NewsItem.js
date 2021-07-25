@@ -6,15 +6,24 @@ import styles from "../styles/News.module.css";
 const useStyles = makeStyles({
     newsContainer: {
         padding: 0,
+        "@media screen and (max-width: 700px)": {
+            height: "300px",
+        },
     },
     title: {
         fontSize: "24px",
         color: "#09394F",
         overflow: "hidden",
         textOverflow: "ellipsis",
+        "@media screen and (max-width: 700px)": {
+            fontSize: "18px",
+        },
     },
     description: {
         fontFamily: "Mulish",
+        "@media screen and (max-width: 700px)": {
+            display: "none",
+        },
     },
     text: {
         padding: "10px",
@@ -27,7 +36,7 @@ const useStyles = makeStyles({
 function Component({ url, title, description, urlToImage }) {
     const classes = useStyles();
     return (
-        <Grid item md={4} className={classes.newsContainer}>
+        <Grid item xs={6} md={4} className={classes.newsContainer}>
             <Box className={styles.article}>
                 <a href={url}>
                     <img
