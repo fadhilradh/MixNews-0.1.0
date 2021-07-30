@@ -27,12 +27,27 @@ const useStyles = makeStyles({
     background: "#F1EFEF",
     height: "40px",
     "@media screen and (max-width: 700px)": {
-      height: "80px",
+      height: "40px",
     },
   },
   categories: {
     display: "flex",
-    gap: "44px",
+    alignItems: "center",
+    gap: "20px",
+    "@media screen and (max-width: 700px)": {
+      justifyContent: "space-between",
+      gap: "0px",
+    },
+  },
+  button: {
+    height: "40px",
+    textTransform: "none",
+    fontWeight: "semi-bold",
+    color: "#09394F",
+    fontSize: "16px",
+    "@media screen and (max-width: 700px)": {
+      fontSize: "14px",
+    },
   },
 });
 
@@ -51,12 +66,14 @@ function Component({ setSelectedCategory }) {
           className={classes.categories}
         >
           {categories.map((category) => (
-            <Button
-              onClick={() => setSelectedCategory(category.id)}
-              key={Math.random()}
-            >
-              {category.label}
-            </Button>
+            <Grid item key={Math.random()}>
+              <Button
+                className={classes.button}
+                onClick={() => setSelectedCategory(category.id)}
+              >
+                {category.label}
+              </Button>
+            </Grid>
           ))}
         </Container>
       </Grid>
