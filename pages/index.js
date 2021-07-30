@@ -3,12 +3,20 @@ import Head from "next/head";
 import Image from "next/image";
 import { Container, Grid, Link, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { fetchNews } from "../pages/api/news";
+import { fetchNews, fetchNewsByQuery } from "../pages/api/news";
 import { News, Header } from "../components";
 
 export default function Home() {
   const [news, setNews] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("sports");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    console.log("runninf");
+    const data = await fetchNewsByQuery(searchQuery);
+    setNews(data);
+  };
 
   useEffect(() => {
     async function fetch() {
@@ -18,7 +26,6 @@ export default function Home() {
     }
     fetch();
   }, [selectedCategory]);
-
   return (
     <>
       <Head>
@@ -29,6 +36,9 @@ export default function Home() {
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+        handleSearch={handleSearch}
       />
       <Container fluid="true" style={{ maxWidth: "1084px" }}>
         <News news={news} />

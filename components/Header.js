@@ -51,7 +51,12 @@ const useStyles = makeStyles({
   },
 });
 
-function Component({ setSelectedCategory }) {
+function Component({
+  setSelectedCategory,
+  searchQuery,
+  setSearchQuery,
+  handleSearch,
+}) {
   const classes = useStyles();
   return (
     <>
@@ -75,6 +80,16 @@ function Component({ setSelectedCategory }) {
               </Button>
             </Grid>
           ))}
+          <form onSubmit={handleSearch}>
+            <input
+              style={{ width: "220px" }}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="English news from around the world"
+            />
+            <input type="submit" value="Search" />
+          </form>
         </Container>
       </Grid>
     </>
