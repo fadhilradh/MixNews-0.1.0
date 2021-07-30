@@ -1,16 +1,16 @@
-let useDummyData = true;
+let useDummyData = false;
 import data from "./articles.json";
 
-export async function fetchNews() {
-    const apiKey = "232feacd8ba04a0f8df9027d16cf7857";
-    const baseUrl = "https://newsapi.org/v2/";
+export async function fetchNews(category) {
+  const baseUrl = "https://newsapi.org/v2/";
+  const apiKey = "232feacd8ba04a0f8df9027d16cf7857";
 
-    if (useDummyData) {
-        return data.articles;
-    } else {
-        const { articles } = await fetch(
-            `${baseUrl}top-headlines?country=id&category=sports&apiKey=${apiKey}`
-        ).then((response) => response.json());
-        console.log(articles);
-    }
+  if (useDummyData) {
+    return data.articles;
+  }
+
+  const { articles } = await fetch(
+    `${baseUrl}top-headlines?country=id&category=${category}&apiKey=${apiKey}`
+  ).then((response) => response.json());
+  return articles;
 }
