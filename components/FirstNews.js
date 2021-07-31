@@ -1,5 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
+import {
+  Box,
+  Container,
+  Grid,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import moment from "moment";
 
 const useStyles = makeStyles({
@@ -7,6 +13,8 @@ const useStyles = makeStyles({
     background: "white",
     borderRadius: "10px",
     height: "auto",
+  },
+  firstNews: {
     "& img": {
       objectFit: "cover",
       height: "50%",
@@ -15,7 +23,7 @@ const useStyles = makeStyles({
     },
     "&:hover": {
       cursor: "pointer",
-      "& >div > a": {
+      "& > div > a": {
         color: "#0066CC",
       },
     },
@@ -54,7 +62,6 @@ const useStyles = makeStyles({
 
   secondNews: {
     display: "flex",
-    marginTop: "16px",
     height: "135px",
     borderRadius: "10px",
     border: "1px solid #eaeaea",
@@ -101,45 +108,46 @@ function Component({ firstNews, secondNews }) {
   const classes = useStyles();
   console.log(firstNews);
   return (
-    <Grid item className={classes.root}>
-      <a href={firstNews?.url}>
-        <img
-          onError={addDefaultSrc}
-          src={
-            firstNews?.urlToImage !== null
-              ? firstNews?.urlToImage
-              : "https://picsum.photos/600/340"
-          }
-          alt="image"
-        />
-      </a>
-      <Box
-        style={{
-          padding: "16px",
-        }}
-      >
-        <a href={firstNews?.url} className={classes.title}>
-          {firstNews?.title}
+    <Grid className={classes.root}>
+      <Box className={classes.firstNews}>
+        <a href={firstNews?.url}>
+          <img
+            onError={addDefaultSrc}
+            src={
+              firstNews?.urlToImage !== null
+                ? firstNews?.urlToImage
+                : "https://picsum.photos/600/340"
+            }
+            alt="image"
+          />
         </a>
-        <Typography className={classes.description}>
-          {firstNews?.description}
-        </Typography>
-        <Typography variant="caption" style={{ color: "#A5A6A7" }}>
-          {moment(firstNews?.publishedAt).fromNow()}
-        </Typography>
-
-        <Box className={classes.secondNews}>
-          <a href={secondNews?.url}>
-            <img
-              onError={addDefaultSrc}
-              src={
-                secondNews?.urlToImage !== null
-                  ? secondNews?.urlToImage
-                  : "https://picsum.photos/600/340"
-              }
-              alt="2nd"
-            />
+        <Box
+          style={{
+            padding: "16px",
+          }}
+        >
+          <a href={firstNews?.url} className={classes.title}>
+            {firstNews?.title}
           </a>
+          <Typography className={classes.description}>
+            {firstNews?.description}
+          </Typography>
+          <Typography variant="caption" style={{ color: "#A5A6A7" }}>
+            {moment(firstNews?.publishedAt).fromNow()}
+          </Typography>
+        </Box>
+      </Box>
+      <Box style={{ padding: "16px" }}>
+        <Box className={classes.secondNews}>
+          <img
+            onError={addDefaultSrc}
+            src={
+              secondNews?.urlToImage !== null
+                ? secondNews?.urlToImage
+                : "https://picsum.photos/600/340"
+            }
+            alt="2nd"
+          />
           <Box className={classes.secondText}>
             <a className={classes.secondTitle} href={secondNews?.url}>
               {secondNews?.title}

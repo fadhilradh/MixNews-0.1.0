@@ -11,7 +11,6 @@ const useStyles = makeStyles({
     padding: "16px !important",
     borderRadius: "10px",
     background: "white",
-    height: "auto",
     "@media screen and (max-width: 700px)": {
       minHeight: "400px",
     },
@@ -29,7 +28,8 @@ const useStyles = makeStyles({
     padding: "10px",
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+    flexGrow: 1,
+    justifyContent: "space-between",
     background: "#FFF",
     borderRadius: "0 0 10px 10px",
     border: "1px solid #eaeaea",
@@ -46,6 +46,9 @@ const useStyles = makeStyles({
     marginBottom: "16px",
   },
   article: {
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
     "&:hover": {
       cursor: "pointer",
       "& > div > a": {
@@ -66,7 +69,7 @@ function Component({ item }) {
     <Box className={classes.newsContainer}>
       <span style={{ display: "flex", alignItems: "baseline" }}>
         <Typography className={classes.source}>{source.name} • </Typography>
-        <Typography variant="subtitle1  " style={{ color: "#a5a6a7" }}>
+        <Typography variant="subtitle1" style={{ color: "#a5a6a7" }}>
           &nbsp;{author}
         </Typography>
       </span>
