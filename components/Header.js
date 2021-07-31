@@ -62,10 +62,10 @@ function Component({
     <>
       <Box className={classes.root}>
         <Container style={{ maxWidth: "1084px" }}>
-          <Typography className={classes.title}>Fad.News</Typography>
+          <Typography className={classes.title}>World.News</Typography>
         </Container>
       </Box>
-      <Grid container className={classes.menu}>
+      {/* <Grid container className={classes.menu}>
         <Container
           style={{ maxWidth: "1084px" }}
           className={classes.categories}
@@ -91,7 +91,7 @@ function Component({
             <input type="submit" value="Search" />
           </form>
         </Container>
-      </Grid>
+      </Grid> */}
     </>
   );
 }
