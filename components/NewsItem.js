@@ -71,14 +71,16 @@ function Component({ item }) {
         </Typography>
       </span>
       <Box className={classes.article}>
-        <img
-          className={classes.image}
-          onError={addDefaultSrc}
-          src={
-            urlToImage !== null ? urlToImage : "https://picsum.photos/600/340"
-          }
-          alt=""
-        />
+        <a href={url}>
+          <img
+            className={classes.image}
+            onError={addDefaultSrc}
+            src={
+              urlToImage !== null ? urlToImage : "https://picsum.photos/600/340"
+            }
+            alt=""
+          />
+        </a>
         <Box className={classes.text}>
           <a href={url} className={classes.title}>
             {title}

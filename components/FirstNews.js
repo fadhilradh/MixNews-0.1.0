@@ -13,6 +13,12 @@ const useStyles = makeStyles({
       width: "100%",
       borderRadius: "10px 10px 0 0",
     },
+    "&:hover": {
+      cursor: "pointer",
+      "& >div > a": {
+        color: "#0066CC",
+      },
+    },
   },
   newsContainer: {
     padding: 0,
@@ -45,13 +51,9 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: "10px",
   },
-  content: {
-    padding: "16px",
-  },
-  newsDate: {
-    color: "#A5A6A7",
-  },
+
   secondNews: {
+    display: "flex",
     marginTop: "16px",
     height: "135px",
     borderRadius: "10px",
@@ -61,6 +63,33 @@ const useStyles = makeStyles({
       width: "38%",
       height: "100%",
     },
+    "&:hover": {
+      "& > div > a": {
+        color: "#0066CC",
+      },
+    },
+  },
+  secondText: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: "12px",
+  },
+  secondTitle: {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    "-webkit-line-clamp": 2,
+    "-webkit-box-orient": "vertical",
+  },
+  secondDesc: {
+    fontWeight: "300",
+    lineHeight: "16px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    "-webkit-line-clamp": 2,
+    "-webkit-box-orient": "vertical",
   },
 });
 
@@ -73,37 +102,55 @@ function Component({ firstNews, secondNews }) {
   console.log(firstNews);
   return (
     <Grid item className={classes.root}>
-      <img
-        onError={addDefaultSrc}
-        src={
-          firstNews?.urlToImage !== null
-            ? firstNews?.urlToImage
-            : "https://picsum.photos/600/340"
-        }
-        alt="image"
-      />
-      <Box className={classes.content}>
+      <a href={firstNews?.url}>
+        <img
+          onError={addDefaultSrc}
+          src={
+            firstNews?.urlToImage !== null
+              ? firstNews?.urlToImage
+              : "https://picsum.photos/600/340"
+          }
+          alt="image"
+        />
+      </a>
+      <Box
+        style={{
+          padding: "16px",
+        }}
+      >
         <a href={firstNews?.url} className={classes.title}>
           {firstNews?.title}
         </a>
         <Typography className={classes.description}>
           {firstNews?.description}
         </Typography>
-        <Typography variant="caption" className={classes.newsDate}>
+        <Typography variant="caption" style={{ color: "#A5A6A7" }}>
           {moment(firstNews?.publishedAt).fromNow()}
         </Typography>
 
         <Box className={classes.secondNews}>
-          <img
-            onError={addDefaultSrc}
-            src={
-              secondNews?.urlToImage !== null
-                ? secondNews?.urlToImage
-                : "https://picsum.photos/600/340"
-            }
-            alt="2nd"
-          />
-          <Box></Box>
+          <a href={secondNews?.url}>
+            <img
+              onError={addDefaultSrc}
+              src={
+                secondNews?.urlToImage !== null
+                  ? secondNews?.urlToImage
+                  : "https://picsum.photos/600/340"
+              }
+              alt="2nd"
+            />
+          </a>
+          <Box className={classes.secondText}>
+            <a className={classes.secondTitle} href={secondNews?.url}>
+              {secondNews?.title}
+            </a>
+            <Typography variant="subtitle2" className={classes.secondDesc}>
+              {secondNews?.description}
+            </Typography>
+            <Typography variant="caption" style={{ color: "#A5A6A7" }}>
+              {moment(secondNews?.publishedAt).fromNow()}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Grid>
