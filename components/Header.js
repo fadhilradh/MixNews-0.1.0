@@ -4,6 +4,7 @@ import {
   Container,
   Grid,
   makeStyles,
+  TextField,
   Typography,
 } from "@material-ui/core";
 
@@ -15,6 +16,7 @@ const useStyles = makeStyles({
     height: "auto",
     background: "#F8F8F8",
     marginBottom: "32px",
+    borderBottom: "4px solid #E09B1B",
   },
   title: {
     fontSize: "42px",
@@ -35,15 +37,17 @@ const useStyles = makeStyles({
       height: "40px",
     },
   },
+  navigation: {
+    display: "flex",
+    "@media screen and (max-width: 800px)": {
+      display: "none",
+    },
+  },
   categories: {
-    marginLeft: "20px",
+    margin: "0 40px 0 40px",
     display: "flex",
     alignItems: "center",
     gap: "20px",
-
-    "@media screen and (max-width: 700px)": {
-      display: "none",
-    },
   },
   nav: {
     fontFamily: "arial",
@@ -59,6 +63,13 @@ const useStyles = makeStyles({
       fontSize: "14px",
     },
   },
+  searchButton: {
+    padding: "0 15px 0 15px",
+    fontWeight: "bold",
+    fontSize: "12px",
+    marginLeft: "10px",
+    backgroundColor: "#E09B1B",
+  },
 });
 
 function Component({
@@ -69,17 +80,15 @@ function Component({
 }) {
   const classes = useStyles();
   return (
-    <>
-      <Box className={classes.root}>
-        <Container
-          style={{ maxWidth: "1084px", display: "flex", alignItems: "center" }}
-        >
-          <span style={{ display: "flex", justifyContent: "flex-start" }}>
-            <Typography className={classes.title}>MIX</Typography>
-            <Typography className={classes.title} style={{ color: "#E09B1B" }}>
-              NEWS
-            </Typography>
-          </span>
+    <Box className={classes.root}>
+      <Container style={{ display: "flex", alignItems: "center" }}>
+        <span style={{ display: "flex", justifyContent: "flex-start" }}>
+          <Typography className={classes.title}>MIX</Typography>
+          <Typography className={classes.title} style={{ color: "#E09B1B" }}>
+            NEWS
+          </Typography>
+        </span>
+        <Box className={classes.navigation}>
           <Box className={classes.categories}>
             {categories.map((category) => (
               <Box key={Math.random()} style={{ display: "flex", gap: "18px" }}>
@@ -92,20 +101,29 @@ function Component({
                 <Typography>|</Typography>
               </Box>
             ))}
-            <form onSubmit={handleSearch}>
-              <input
-                style={{ width: "220px" }}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="English news from around the world"
-              />
-              <input type="submit" value="Search" />
-            </form>
           </Box>
-        </Container>
-      </Box>
-    </>
+          <form onSubmit={handleSearch} style={{ display: "flex" }}>
+            <TextField
+              size="small"
+              style={{ width: "220px" }}
+              label="Search topics, names, etc"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              variant="outlined"
+            />
+            <Button
+              type="submit"
+              value="Search"
+              size="small"
+              variant="contained"
+              className={classes.searchButton}
+            >
+              Search
+            </Button>
+          </form>
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
