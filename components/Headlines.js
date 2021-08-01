@@ -36,6 +36,7 @@ const useStyles = makeStyles({
     },
   },
   title: {
+    marginBottom: "10px",
     fontSize: "22px",
     fontWeight: "500",
     overflow: "hidden",

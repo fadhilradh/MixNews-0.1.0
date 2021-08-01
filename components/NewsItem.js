@@ -11,9 +11,6 @@ const useStyles = makeStyles({
     padding: "16px !important",
     borderRadius: "10px",
     background: "white",
-    "@media screen and (max-width: 700px)": {
-      minHeight: "400px",
-    },
   },
   title: {
     fontSize: "16px",
@@ -33,6 +30,7 @@ const useStyles = makeStyles({
     background: "#FFF",
     borderRadius: "0 0 10px 10px",
     border: "1px solid #eaeaea",
+    gap: "10px",
   },
   image: {
     borderRadius: "10px 10px 0 0",
@@ -48,7 +46,9 @@ const useStyles = makeStyles({
   article: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     flexGrow: 1,
+
     "&:hover": {
       cursor: "pointer",
       "& > div > a": {
@@ -68,10 +68,7 @@ function Component({ item }) {
   return (
     <Box className={classes.newsContainer}>
       <span style={{ display: "flex", alignItems: "baseline" }}>
-        <Typography className={classes.source}>{source.name} • </Typography>
-        <Typography variant="subtitle1" style={{ color: "#a5a6a7" }}>
-          &nbsp;{author}
-        </Typography>
+        <Typography className={classes.source}>{source.name} </Typography>
       </span>
       <Box className={classes.article}>
         <a href={url}>
@@ -89,7 +86,7 @@ function Component({ item }) {
             {title}
           </a>
           <Typography variant="caption" style={{ color: "#A5A6A7" }}>
-            {moment(publishedAt).fromNow()}
+            {moment(publishedAt).fromNow()} &nbsp;|&nbsp; {author}
           </Typography>
         </Box>
       </Box>

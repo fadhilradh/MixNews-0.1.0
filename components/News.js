@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Box, Divider, Grid, makeStyles, Typography } from "@material-ui/core";
-import { FirstNews, NewsItem } from ".";
+import { Headlines, NewsItem } from ".";
 
 const useStyles = makeStyles({
   content: {
@@ -13,7 +13,7 @@ function Component({ news }) {
   const classes = useStyles();
   return (
     <Grid item>
-      <FirstNews
+      <Headlines
         firstNews={firstNews}
         secondNews={secondNews}
         style={{ width: "100%" }}

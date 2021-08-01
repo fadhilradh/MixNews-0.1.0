@@ -1,4 +1,4 @@
-let useDummyData = true;
+let useDummyData = false;
 import data from "./articles.json";
 
 export async function fetchNews(category) {
