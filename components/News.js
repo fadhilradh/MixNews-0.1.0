@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Box, Divider, Grid, makeStyles, Typography } from "@material-ui/core";
 import { Headlines, NewsItem } from ".";
+import { getTopHeadlines } from "../pages/api/node";
 
 const useStyles = makeStyles({
   content: {
@@ -9,6 +10,7 @@ const useStyles = makeStyles({
 });
 
 function Component({ news }) {
+  // getTopHeadlines();
   const [firstNews, secondNews, ...restNews] = news;
   const classes = useStyles();
   return (

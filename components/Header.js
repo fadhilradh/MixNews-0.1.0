@@ -1,14 +1,15 @@
+import clsx from "clsx";
 import {
   Box,
   Button,
   Container,
+  Divider,
   Grid,
   makeStyles,
   TextField,
   Typography,
 } from "@material-ui/core";
-
-import { categories } from "./constant";
+import Navigation from "./Navigation";
 
 const useStyles = makeStyles({
   root: {
@@ -16,7 +17,6 @@ const useStyles = makeStyles({
     height: "auto",
     background: "#F8F8F8",
     marginBottom: "32px",
-    borderBottom: "4px solid #E09B1B",
   },
   title: {
     fontSize: "42px",
@@ -50,17 +50,21 @@ const useStyles = makeStyles({
     gap: "20px",
   },
   nav: {
-    fontFamily: "arial",
-    letterSpacing: "2px",
-    fontWeight: "800",
-    textTransform: "uppercase",
-    fontSize: "18px",
-    "&:hover": {
-      cursor: "pointer",
-      color: "#E09B1B",
-    },
-    "@media screen and (max-width: 950px)": {
-      fontSize: "14px",
+    display: "flex",
+    gap: "16px",
+    "& > p": {
+      fontFamily: "arial",
+      letterSpacing: "2px",
+      fontWeight: "800",
+      textTransform: "uppercase",
+      fontSize: "16px",
+      "&:hover": {
+        cursor: "pointer",
+        color: "#E09B1B",
+      },
+      "@media screen and (max-width: 950px)": {
+        fontSize: "14px",
+      },
     },
   },
   searchButton: {
@@ -70,59 +74,64 @@ const useStyles = makeStyles({
     marginLeft: "10px",
     backgroundColor: "#E09B1B",
   },
+  border: {
+    height: "4px",
+    width: "100%",
+    background: "#C82828",
+  },
+  business: {
+    backgroundColor: "#6AA0DC",
+    color: "#0066CC",
+  },
+  health: {
+    backgroundColor: "#BE82B9",
+    color: "#6AA0DC",
+  },
+  sports: {
+    backgroundColor: "#C39B41",
+  },
+  technology: {
+    backgroundColor: "#78AA6E",
+  },
 });
 
 function Component({
   setSelectedCategory,
+  selectedCategory,
   searchQuery,
   setSearchQuery,
   handleSearch,
 }) {
+  const isBusiness = selectedCategory === "business";
+  const isSports = selectedCategory === "sports";
+  const isTech = selectedCategory === "technology";
+  const isHealth = selectedCategory === "health";
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Container style={{ display: "flex", alignItems: "center" }}>
+      <Container
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <span style={{ display: "flex", justifyContent: "flex-start" }}>
           <Typography className={classes.title}>MIX</Typography>
           <Typography className={classes.title} style={{ color: "#E09B1B" }}>
             NEWS
           </Typography>
         </span>
-        <Box className={classes.navigation}>
-          <Box className={classes.categories}>
-            {categories.map((category) => (
-              <Box key={Math.random()} style={{ display: "flex", gap: "18px" }}>
-                <Typography
-                  className={classes.nav}
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  {category.label}
-                </Typography>
-                <Typography>|</Typography>
-              </Box>
-            ))}
-          </Box>
-          <form onSubmit={handleSearch} style={{ display: "flex" }}>
-            <TextField
-              size="small"
-              style={{ width: "220px" }}
-              label="Search topics, names, etc"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              variant="outlined"
-            />
-            <Button
-              type="submit"
-              value="Search"
-              size="small"
-              variant="contained"
-              className={classes.searchButton}
-            >
-              Search
-            </Button>
-          </form>
-        </Box>
+        <Navigation setSelectedCategory={setSelectedCategory} />
       </Container>
+      <Divider
+        className={clsx(classes.border, {
+          [classes.business]: isBusiness,
+          [classes.health]: isHealth,
+          [classes.sports]: isSports,
+          [classes.technology]: isTech,
+        })}
+      />
     </Box>
   );
 }

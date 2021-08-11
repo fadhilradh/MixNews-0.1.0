@@ -11,6 +11,8 @@ const useStyles = makeStyles({
     padding: "16px !important",
     borderRadius: "10px",
     background: "white",
+    boxShadow:
+      "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
   },
   title: {
     fontSize: "16px",
@@ -29,8 +31,8 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     background: "#FFF",
     borderRadius: "0 0 10px 10px",
-    border: "1px solid #eaeaea",
     gap: "10px",
+    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
   },
   image: {
     borderRadius: "10px 10px 0 0",

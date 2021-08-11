@@ -40,7 +40,7 @@ export default function Home() {
         searchQuery={searchQuery}
         handleSearch={handleSearch}
       />
-      <Container fluid="true" style={{ maxWidth: "660px" }}>
+      <Container fluid="true" style={{ maxWidth: "660px", padding: 0 }}>
         <News news={news} style={{ width: "100%" }} />
 
         <footer>Created by Fadhil Radhian</footer>

@@ -2,6 +2,7 @@
 import {
   Box,
   Container,
+  Divider,
   Grid,
   makeStyles,
   Typography,
@@ -65,7 +66,7 @@ const useStyles = makeStyles({
     display: "flex",
     height: "135px",
     borderRadius: "10px",
-    border: "1px solid #eaeaea",
+    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
     "& > img": {
       borderRadius: "10px 0 0 10px",
       width: "38%",
@@ -138,6 +139,7 @@ function Component({ firstNews, secondNews }) {
           </Typography>
         </Box>
       </Box>
+      <Divider />
       <Box style={{ padding: "16px" }}>
         <Box className={classes.secondNews}>
           <img
