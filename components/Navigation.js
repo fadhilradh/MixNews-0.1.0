@@ -18,6 +18,9 @@ const useStyles = makeStyles({
       gap: "8px",
       marginBottom: "6px",
     },
+    "@media screen and (max-width: 650px)": {
+      display: "none",
+    },
     "& > a": {
       fontFamily: "arial",
       letterSpacing: "2px",

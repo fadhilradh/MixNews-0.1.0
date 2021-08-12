@@ -63,24 +63,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     gap: "20px",
   },
-  nav: {
-    display: "flex",
-    gap: "16px",
-    "& > p": {
-      fontFamily: "arial",
-      letterSpacing: "2px",
-      fontWeight: "800",
-      textTransform: "uppercase",
-      fontSize: "16px",
-      "&:hover": {
-        cursor: "pointer",
-        color: "#E09B1B",
-      },
-      "@media screen and (max-width: 950px)": {
-        fontSize: "14px",
-      },
-    },
-  },
+
   searchButton: {
     padding: "0 15px 0 15px",
     fontWeight: "bold",
