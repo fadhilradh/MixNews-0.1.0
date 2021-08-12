@@ -53,7 +53,7 @@ const useStyles = makeStyles({
   description: {
     fontSize: "14px",
     color: "#48494A",
-    marginTop: "8px",
+    marginTop: "10px",
   },
   text: {
     padding: "10px",
