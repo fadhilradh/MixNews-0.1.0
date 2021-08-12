@@ -18,11 +18,25 @@ const useStyles = makeStyles({
     background: "#F8F8F8",
     marginBottom: "32px",
   },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "@media screen and (max-width: 700px)": {
+      flexDirection: "column",
+    },
+  },
   title: {
     fontSize: "42px",
     fontFamily: "arial",
     color: "#494D58",
     fontWeight: "bold",
+  },
+  logo: {
+    "@media screen and (max-width: 700px)": {
+      display: "flex",
+      alignItems: "items-end",
+    },
   },
   subtitle: {
     marginLeft: "3px",
@@ -109,19 +123,20 @@ function Component({
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Container
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <span style={{ display: "flex", justifyContent: "flex-start" }}>
-          <Typography className={classes.title}>MIX</Typography>
-          <Typography className={classes.title} style={{ color: "#E09B1B" }}>
-            NEWS
+      <Container className={classes.header}>
+        <Box className={classes.logo}>
+          <span style={{ display: "flex" }}>
+            <Typography className={classes.title}>MIX</Typography>
+            <Typography className={classes.title} style={{ color: "#E09B1B" }}>
+              NEWS
+            </Typography>
+          </span>
+          <Typography
+            style={{ fontFamily: "arial", fontSize: 12, color: "#E09B1B" }}
+          >
+            by Fadhil Radhian
           </Typography>
-        </span>
+        </Box>
         <Navigation setSelectedCategory={setSelectedCategory} />
       </Container>
       <Divider

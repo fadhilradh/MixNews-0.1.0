@@ -108,7 +108,7 @@ const addDefaultSrc = (ev) => {
 
 function Component({ firstNews, secondNews }) {
   const classes = useStyles();
-  console.log(firstNews);
+  // console.log(firstNews);
   return (
     <Grid className={classes.root}>
       <Box className={classes.firstNews}>

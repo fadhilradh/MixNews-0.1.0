@@ -7,7 +7,7 @@ import { News, Header } from "../components";
 
 export default function Home() {
   const [news, setNews] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("sports");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = async (e) => {
@@ -42,8 +42,6 @@ export default function Home() {
       />
       <Container fluid="true" style={{ maxWidth: "660px", padding: 0 }}>
         <News news={news} style={{ width: "100%" }} />
-
-        <footer>Created by Fadhil Radhian</footer>
       </Container>
     </Container>
   );

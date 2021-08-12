@@ -3,9 +3,6 @@ import { Box, makeStyles, Typography } from "@material-ui/core";
 const useStyles = makeStyles({
   navigation: {
     display: "flex",
-    "@media screen and (max-width: 800px)": {
-      display: "none",
-    },
   },
   categories: {
     margin: "0 40px 0 40px",
@@ -15,17 +12,22 @@ const useStyles = makeStyles({
   },
   nav: {
     display: "flex",
+    alignItems: "center",
     gap: "16px",
+    "@media screen and (max-width: 950px)": {
+      gap: "8px",
+      marginBottom: "6px",
+    },
     "& > a": {
       fontFamily: "arial",
       letterSpacing: "2px",
       fontWeight: "800",
       textTransform: "uppercase",
       fontSize: "16px",
-      // "&:hover": {
-      //   cursor: "pointer",
-      //   color: "#E09B1B",
-      // },
+      "&:hover": {
+        cursor: "pointer",
+        color: "#E09B1B",
+      },
       "@media screen and (max-width: 950px)": {
         fontSize: "14px",
       },
@@ -75,7 +77,7 @@ const Component = ({ setSelectedCategory }) => {
           <a
             href="#"
             className={classes.home}
-            onClick={() => setSelectedCategory("home")}
+            onClick={() => setSelectedCategory("")}
           >
             HOME
           </a>
