@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { Container } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { fetchNews, fetchNewsByQuery } from "../pages/api/news";
+import { fetchNews, fetchNewsByQuery } from "./api/news";
 import { News, Header } from "../components";
 
 export default function Home() {
